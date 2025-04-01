@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
             transform.position = newPos;
         }
 #elif UNITY_STANDALONE || UNITY_EDITOR
-        // Detects if the space key was pressed, and inverts player position.
+        // Detects if the left mouse button was pressed, and inverts player position.
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             playerYPosition = -playerYPosition;
