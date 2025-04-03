@@ -5,6 +5,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstaclesPrefabs;
     [SerializeField] private float spawnInterval = 2f;
+    [SerializeField] private float overrideObstacleSpeed = 7f;
     Vector3 spawnPos;
     Coroutine spawnCoroutine;
 
@@ -20,7 +21,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Spawn()
     {
-        Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], spawnPos, transform.rotation);
+        var obstacle = Instantiate(obstaclesPrefabs[Random.Range(0, obstaclesPrefabs.Length)], spawnPos, transform.rotation);
+        obstacle.GetComponent<Obstacle>().SetSpeed(overrideObstacleSpeed);
         if (Random.Range(0, 2) == 0)
         {
             spawnPos.y = -spawnPos.y;
@@ -45,6 +47,22 @@ public class ObstacleSpawner : MonoBehaviour
         {
             StopCoroutine(spawnCoroutine);
             spawnCoroutine = null;
+        }
+    }
+
+    private void Update()
+    {
+        if (spawnCoroutine != null)
+        {
+
+            if (spawnInterval > 0.5f)
+            {
+                spawnInterval -= Time.deltaTime * 0.01f;
+            }
+            if (overrideObstacleSpeed < 30f)
+            {
+                overrideObstacleSpeed += Time.deltaTime * 0.05f;
+            }
         }
     }
 }
