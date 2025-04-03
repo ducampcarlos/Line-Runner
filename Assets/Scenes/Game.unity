@@ -609,6 +609,7 @@ MonoBehaviour:
   - {fileID: 7526147845712592152, guid: 7ca56617728be244891ac642ae85770c, type: 3}
   - {fileID: 1819720851094375467, guid: aae1a952ee271f14da7af0be39a84fa5, type: 3}
   spawnInterval: 2
+  overrideObstacleSpeed: 7
 --- !u!1 &970463583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,6 +1215,7 @@ GameObject:
   - component: {fileID: 1646829384}
   - component: {fileID: 1646829386}
   - component: {fileID: 1646829385}
+  - component: {fileID: 1646829387}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1288,9 +1290,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 72
-  m_fontSizeBase: 24
+  m_fontSizeBase: 72
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1339,6 +1341,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646829383}
   m_CullTransparentMesh: 1
+--- !u!95 &1646829387
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646829383}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1f9e6c0109566b4c962bf7eb975d781, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1908797064
 GameObject:
   m_ObjectHideFlags: 0
