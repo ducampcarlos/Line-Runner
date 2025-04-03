@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int lives = 3;
     public int currentLives;
 
-    private void Start()
+    private void Awake()
     {
         playerYPosition = transform.position.y;
         currentLives = lives;

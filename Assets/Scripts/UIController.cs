@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI livesText;
+    [SerializeField] GameObject titleObject;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class UIController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        titleObject.SetActive(true);
     }
 
     public void UpdateLives(int lives)
@@ -28,5 +30,10 @@ public class UIController : MonoBehaviour
     public void UpdateScore(int score)
     {
         scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void HideTitle()
+    {
+        titleObject.SetActive(false);
     }
 }

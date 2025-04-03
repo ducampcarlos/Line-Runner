@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public GameObject player;
+    public ObstacleSpawner obstacleSpawner;
     public int score;
 
     private void Awake()
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UIController.Instance.UpdateScore(score);
+        player.GetComponent<PlayerController>().enabled = false;
     }
 
     public void RestartGame()
@@ -33,12 +35,15 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-
+        obstacleSpawner.StartSpawner();
+        player.GetComponent<PlayerController>().enabled = true;
+        UIController.Instance.HideTitle();
     }
 
     public void GameOver()
     {
         player.SetActive(false);
+        obstacleSpawner.StopSpawner();
 
         Invoke("RestartGame", 2f); // Restart the game after 2 seconds
     }

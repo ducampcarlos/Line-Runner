@@ -6,11 +6,16 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private GameObject[] obstaclesPrefabs;
     [SerializeField] private float spawnInterval = 2f;
     Vector3 spawnPos;
+    Coroutine spawnCoroutine;
 
     private void Start()
     {
         spawnPos = transform.position;
-        StartCoroutine(SpawnObstacles());
+    }
+
+    public void StartSpawner ()
+    {
+        spawnCoroutine = StartCoroutine(SpawnObstacles());
     }
 
     void Spawn()
@@ -28,9 +33,18 @@ public class ObstacleSpawner : MonoBehaviour
         //Spawns obstacles at a set interval and has a 50% chance to invert Y position of the spawnPos
         while (true)
         {
-            yield return new WaitForSeconds(spawnInterval);
             Spawn();
+            yield return new WaitForSeconds(spawnInterval);
             GameManager.Instance.UpdateScore();
+        }
+    }
+
+    public void StopSpawner()
+    {
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
         }
     }
 }
