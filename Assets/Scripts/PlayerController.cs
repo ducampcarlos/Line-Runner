@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     float playerYPosition;
     [SerializeField] int lives = 3;
-    int currentLives;
+    public int currentLives;
 
     private void Start()
     {
         playerYPosition = transform.position.y;
         currentLives = lives;
+        UIController.Instance.UpdateLives(currentLives);
     }
 
     // Update is called once per frame
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
     private void HitPlayer()
     {
         currentLives--;
+        UIController.Instance.UpdateLives(currentLives);
         if (currentLives <= 0)
         {
             GameManager.Instance.GameOver();

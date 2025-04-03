@@ -30,6 +30,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnInterval);
             Spawn();
+            GameManager.Instance.UpdateScore();
         }
     }
 }
