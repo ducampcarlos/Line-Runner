@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void HitPlayer()
     {
+        GameManager.Instance.Shake();
         currentLives--;
         UIController.Instance.UpdateLives(currentLives);
         if (currentLives <= 0)

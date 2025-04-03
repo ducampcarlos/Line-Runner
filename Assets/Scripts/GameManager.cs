@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,5 +53,26 @@ public class GameManager : MonoBehaviour
     {
         score++;
         UIController.Instance.UpdateScore(score);
+    }
+
+    public void Shake()
+    {
+        StartCoroutine(CameraShake());
+    }
+
+    IEnumerator CameraShake()
+    {
+        Vector3 originalPos = Camera.main.transform.position;
+
+        for (int i = 0; i < 5; i++)
+        {
+            Vector2 RandomPos = Random.insideUnitCircle * 0.5f;
+
+            Camera.main.transform.position = new Vector3(RandomPos.x, RandomPos.y, Camera.main.transform.position.z);
+
+            yield return null;
+        }
+
+        Camera.main.transform.position = originalPos;
     }
 }
