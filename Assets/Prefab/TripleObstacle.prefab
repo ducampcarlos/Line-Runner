@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  obstacleType: 3
+  colorForThisState: {r: 1, g: 0, b: 0, a: 1}
 --- !u!61 &5251465295810215912
 BoxCollider2D:
   m_ObjectHideFlags: 0

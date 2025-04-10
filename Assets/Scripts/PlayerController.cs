@@ -1,4 +1,5 @@
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,43 +9,55 @@ public class PlayerController : MonoBehaviour
     float playerYPosition;
     [SerializeField] int lives = 3;
     public int currentLives;
+    public List<PlayerStateConfig> availableStates = new List<PlayerStateConfig>();
+    private Dictionary<PlayerStates, PlayerState> stateDictionary;
+    private SpriteRenderer spriteRenderer;
+    private PlayerState playerState;
 
     private void Awake()
     {
         playerYPosition = transform.position.y;
         currentLives = lives;
         UIController.Instance.UpdateLives(currentLives);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        stateDictionary = new Dictionary<PlayerStates, PlayerState>();
+        foreach (var config in availableStates)
+        {
+            if (!stateDictionary.ContainsKey(config.state))
+            {
+                stateDictionary.Add(config.state, config.data);
+            }
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnFlipButtonPressed()
     {
-#if UNITY_ANDROID || UNITY_EDITOR
-        // Detects if the screen was touched, and inverts player position.
-        if (Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
-        {
-            playerYPosition = -playerYPosition;
-            var newPos = new Vector3(transform.position.x, playerYPosition, transform.position.z);
-            transform.position = newPos;
-        }
-#elif UNITY_STANDALONE || UNITY_EDITOR
-        // Detects if the left mouse button was pressed, and inverts player position.
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            playerYPosition = -playerYPosition;
-            var newPos = new Vector3(transform.position.x, playerYPosition, transform.position.z);
-            transform.position = newPos;
-        }
-#endif
+        playerYPosition = -playerYPosition;
+        var newPos = new Vector3(transform.position.x, playerYPosition, transform.position.z);
+        transform.position = newPos;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstacle"))
+        Obstacle obstacle = collision.GetComponent<Obstacle>();
+
+        if (obstacle != null)
         {
-            HitPlayer();
+            if (obstacle.GetObstacleType() == playerState.playerState)
+            {
+                Debug.Log("✅ Matchea estado. Lo destruimos.");
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Debug.Log("❌ Estado distinto. Te hace daño.");
+                HitPlayer();
+            }
         }
     }
+
 
     private void HitPlayer()
     {
@@ -86,4 +99,47 @@ public class PlayerController : MonoBehaviour
         color.a = alpha;
         GetComponent<SpriteRenderer>().color = color;
     }
+
+    public void SetPlayerState(PlayerState ps)
+    {
+        playerState = ps;
+        spriteRenderer.color = playerState.playerColor;
+
+        if (playerState.playerSprite != null)
+        {
+            spriteRenderer.sprite = playerState.playerSprite;
+        }
+    }
+
+    public void SetPlayerState(PlayerStates state)
+    {
+        if (stateDictionary != null && stateDictionary.ContainsKey(state))
+        {
+            SetPlayerState(stateDictionary[state]);
+        }
+    }
+
+    public void SetPlayerStateByIndex(int index)
+    {
+        if (index >= 0 && index < availableStates.Count)
+        {
+            SetPlayerState(availableStates[index].data);
+        }
+    }
+}
+
+[System.Serializable]
+public class PlayerState
+{
+    public PlayerStates playerState;
+    public Color playerColor;
+    public Sprite playerSprite; // Nuevo
+}
+
+public enum PlayerStates
+{
+    White,
+    Blue,
+    Yellow,
+    Red // This one it's not accesible for the player
 }
