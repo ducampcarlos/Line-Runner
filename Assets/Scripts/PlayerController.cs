@@ -32,6 +32,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        SetPlayerState(PlayerStates.White);
+    }
+
     public void OnFlipButtonPressed()
     {
         playerYPosition = -playerYPosition;
@@ -47,12 +52,11 @@ public class PlayerController : MonoBehaviour
         {
             if (obstacle.GetObstacleType() == playerState.playerState)
             {
-                Debug.Log("✅ Matchea estado. Lo destruimos.");
-                Destroy(collision.gameObject);
+
             }
             else
             {
-                Debug.Log("❌ Estado distinto. Te hace daño.");
+
                 HitPlayer();
             }
         }

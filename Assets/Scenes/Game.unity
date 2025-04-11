@@ -5723,7 +5723,7 @@ Transform:
   m_GameObject: {fileID: 820444118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0.54, z: 0}
+  m_LocalPosition: {x: 15, y: 1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5742,9 +5742,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclesPrefabs:
-  - {fileID: 4762049507085499523, guid: 15638969f1e02c94a9c72813945f0e47, type: 3}
-  - {fileID: 7526147845712592152, guid: 7ca56617728be244891ac642ae85770c, type: 3}
-  - {fileID: 1819720851094375467, guid: aae1a952ee271f14da7af0be39a84fa5, type: 3}
+  - {fileID: 6400888012134143646, guid: 15638969f1e02c94a9c72813945f0e47, type: 3}
+  - {fileID: 6400888012134143646, guid: 2a3349c19c4176c48a6a1d2370f58aad, type: 3}
+  - {fileID: 6400888012134143646, guid: 5cb41b595a5fd7441a88b48a632f1213, type: 3}
+  - {fileID: 6400888012134143646, guid: a85dbe66422fde740a78aa68e5304220, type: 3}
   spawnInterval: 2
   overrideObstacleSpeed: 10
 --- !u!1 &847885173
