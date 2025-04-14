@@ -10999,8 +10999,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 649156908358421827, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2138707667}
   m_SourcePrefab: {fileID: 100100000, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
+--- !u!82 &1117401341 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3567025477522883768, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
+  m_PrefabInstance: {fileID: 1117401340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1206159961
 GameObject:
   m_ObjectHideFlags: 0
@@ -11184,6 +11192,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1309884449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 649156908358421827, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
+  m_PrefabInstance: {fileID: 1117401340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1318935827
 GameObject:
   m_ObjectHideFlags: 0
@@ -11980,6 +11993,7 @@ GameObject:
   - component: {fileID: 2023747339}
   - component: {fileID: 2023747338}
   - component: {fileID: 2023747340}
+  - component: {fileID: 2023747343}
   - component: {fileID: 2023747342}
   - component: {fileID: 2023747341}
   m_Layer: 0
@@ -12095,6 +12109,7 @@ MonoBehaviour:
       playerState: 3
       playerColor: {r: 0.8773585, g: 0.086908154, b: 0.14686646, a: 1}
       playerSprite: {fileID: -2413806693520163455, guid: 7fbf9c8b8ad1f7f459328c9b649de719, type: 3}
+  spriteToColorShader: {fileID: 2023747343}
 --- !u!61 &2023747341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12168,59 +12183,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1 &2034706345
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2034706347}
-  - component: {fileID: 2034706346}
-  m_Layer: 0
-  m_Name: ShaderEffects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2034706346
+--- !u!114 &2023747343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034706345}
+  m_GameObject: {fileID: 2023747337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7e5c2af7492674fbce72b7a0ea31a8, type: 3}
+  m_Script: {fileID: 11500000, guid: be17e16ea7b2966459a6eb0a839c93c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 2138707664}
-  sharedMaterial: {fileID: 2100000, guid: 6b88bcbf3a6529d46833ea85ca0ed74d, type: 2}
-  bandIndex: 1
-  sensitivity: 10
---- !u!4 &2034706347
-Transform:
+--- !u!114 &2138707667
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034706345}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2138707664 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3567025477522883768, guid: 17681f7590c969c4cb5645c3c42d800e, type: 3}
-  m_PrefabInstance: {fileID: 1117401340}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309884449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209effe6cc6830341870dc1e35cdbed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1117401341}
+  fftWindow: 4
+  sampleIndex: 5
+  smoothSpeed: 15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -12235,4 +12225,3 @@ SceneRoots:
   - {fileID: 1285505556}
   - {fileID: 684226868}
   - {fileID: 1117401340}
-  - {fileID: 2034706347}

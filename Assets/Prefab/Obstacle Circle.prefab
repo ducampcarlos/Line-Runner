@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1084355706688875420}
   - component: {fileID: 7223606437516269008}
   - component: {fileID: 3872993933026326806}
+  - component: {fileID: 6222416262665663649}
   m_Layer: 0
   m_Name: Obstacle Circle
   m_TagString: Obstacle
@@ -57,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 6b88bcbf3a6529d46833ea85ca0ed74d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -4536005901461040631, guid: 7bad530fb9fcc0742a2cdd5eecdfbc58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -154,3 +155,15 @@ MonoBehaviour:
   speed: 10
   obstacleType: 2
   colorForThisState: {r: 1, g: 1, b: 0, a: 1}
+--- !u!114 &6222416262665663649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400888012134143646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be17e16ea7b2966459a6eb0a839c93c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

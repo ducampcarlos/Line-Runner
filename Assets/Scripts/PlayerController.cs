@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Dictionary<PlayerStates, PlayerState> stateDictionary;
     private SpriteRenderer spriteRenderer;
     private PlayerState playerState;
+    [SerializeField] SpriteToColorShader spriteToColorShader;
 
     private void Awake()
     {
@@ -108,6 +109,7 @@ public class PlayerController : MonoBehaviour
     {
         playerState = ps;
         spriteRenderer.color = playerState.playerColor;
+        spriteToColorShader.SetBaseColor();
 
         if (playerState.playerSprite != null)
         {
