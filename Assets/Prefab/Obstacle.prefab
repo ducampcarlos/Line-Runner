@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1084355706688875420}
   - component: {fileID: 7223606437516269008}
   - component: {fileID: 3872993933026326806}
-  - component: {fileID: 3089897946361941900}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -58,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b88bcbf3a6529d46833ea85ca0ed74d, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155,15 +154,3 @@ MonoBehaviour:
   speed: 10
   obstacleType: 3
   colorForThisState: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &3089897946361941900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6400888012134143646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be17e16ea7b2966459a6eb0a839c93c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

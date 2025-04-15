@@ -7,22 +7,26 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private PlayerStates obstacleType;
     [SerializeField] private Color colorForThisState = Color.white;
-    List<SpriteRenderer> sr = new List<SpriteRenderer>();
 
-    private void Start()
+    private List<SpriteRenderer> sr = new List<SpriteRenderer>();
+
+    private void OnEnable()
     {
-        SpriteRenderer single;
-        if (TryGetComponent<SpriteRenderer>(out single) && single != null)
+        if (sr.Count == 0)
         {
-            sr.Add(single);
-        }
-        else if(GetComponentsInChildren<SpriteRenderer>().ToList() != null)
-        {
-            foreach (var sprite in GetComponentsInChildren<SpriteRenderer>().ToList())
+            SpriteRenderer single;
+            if (TryGetComponent<SpriteRenderer>(out single) && single != null)
             {
-                if (sprite != null && sprite.gameObject != gameObject)
+                sr.Add(single);
+            }
+            else if (GetComponentsInChildren<SpriteRenderer>().ToList() != null)
+            {
+                foreach (var sprite in GetComponentsInChildren<SpriteRenderer>().ToList())
                 {
-                    sr.Add(sprite);
+                    if (sprite != null && sprite.gameObject != gameObject)
+                    {
+                        sr.Add(sprite);
+                    }
                 }
             }
         }
@@ -39,7 +43,7 @@ public class Obstacle : MonoBehaviour
 
         if (transform.position.x < -15)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false); // En lugar de destruir, desactivamos
         }
     }
 
