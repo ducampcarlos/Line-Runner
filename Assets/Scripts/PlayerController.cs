@@ -43,6 +43,9 @@ public class PlayerController : MonoBehaviour
         playerYPosition = -playerYPosition;
         var newPos = new Vector3(transform.position.x, playerYPosition, transform.position.z);
         transform.position = newPos;
+        transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+        transform.Rotate(0, 0, 180);
+        spriteRenderer.flipY = !spriteRenderer.flipY;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
